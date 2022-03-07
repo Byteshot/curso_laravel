@@ -19,6 +19,14 @@ class GeneralController extends Controller
      * return view('inicio');
      */
     public function inicio(){
-        return view('inicio');
+        return view('general.inicio');
+    }
+
+    /**
+     * Contacto
+     * return view('contacto');
+     */
+    public function contacto(){
+        return view('general.contacto');
     }
 }

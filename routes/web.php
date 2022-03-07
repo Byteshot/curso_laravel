@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/', [GeneralController::class,'raiz'])->name('raiz');
 Route::get('/inicio', [GeneralController::class, 'inicio'])->name('inicio');
+Route::get('/contacto', [GeneralController::class, 'contacto'])->name('contacto');
 
