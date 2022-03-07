@@ -12,6 +12,6 @@ use Illuminate\Support\Facades\Route;
 | Rutas para el frontend
 |
 */
-Route::get('/', GeneralController::class,'raiz')->name('raiz');
+Route::get('/', [GeneralController::class,'raiz'])->name('raiz');
 Route::get('/inicio', [GeneralController::class, 'inicio'])->name('inicio');
 
