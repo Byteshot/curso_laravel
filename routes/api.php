@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CelularController;
+use App\Http\Middleware\Credenciales;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+$router->group(['prefix' => 'v1','middleware' =>'credenciales'], function () use ($router) {
+    $router->get('/celulares', CelularController::class.'@index');
+    $router->post('/celulares', CelularController::class.'@store');
+    $router->get('/celular/{id}', CelularController::class.'@show');
+    $router->put('/celular/{id}', CelularController::class.'@update');
+    $router->patch('/celular/{id}', CelularController::class.'@update');
+    $router->delete('/celular/{id}', CelularController::class.'@destroy');
 });
+
+
+

@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 class GeneralController extends Controller
 {
     /**
-     * Raiz
-     * return redirect()->route('inicio');
+     * Raiz de la aplicación
+     * @return Redirect
      */
     public function raiz(){
         return redirect()->route('inicio');
@@ -16,17 +16,18 @@ class GeneralController extends Controller
 
     /**
      * Inicio
-     * return view('inicio');
+     * @return View
      */
     public function inicio(){
         return view('general.inicio');
     }
 
     /**
-     * Contacto
-     * return view('contacto');
+     * Acerca de
+     * @return View
      */
-    public function contacto(){
-        return view('general.contacto');
+    public function acerca(){
+        return view('general.acerca');
     }
+
 }

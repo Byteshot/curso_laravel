@@ -30,4 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'celulares' => [
+        'base_uri' => env('CELULARES_URL_BASE_URL'),
+        'token' => env('CELULARES_TOKEN'),
+    ],
+
 ];

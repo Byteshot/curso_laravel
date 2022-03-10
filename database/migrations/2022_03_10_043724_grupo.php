@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTablePublicaciones extends Migration
+class Grupo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateTablePublicaciones extends Migration
      */
     public function up()
     {
-        Schema::create('publicaciones', function (Blueprint $table) {
-            $table->id();
+        // Crear la tabla de grupos
+        Schema::create('grupos', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('nombre');
-            $table->string('slug');
-            $table->string('contenido');
+            $table->string('descripcion');
+            $table->string('codigo');
             $table->timestamps();
         });
     }
@@ -29,6 +30,7 @@ class CreateTablePublicaciones extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('publicaciones');
+        // Eliminar la tabla de grupos
+        Schema::dropIfExists('grupos');
     }
 }

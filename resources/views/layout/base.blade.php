@@ -36,11 +36,12 @@
 </head>
 <body>
 
-    @include('layout.header')
+    @extends('layout.encabezado')
 
-    @yield('contenido')
+	@yield('contenido')
 
-    @include('layout.footer')
+
+    @extends('layout.pie')
 
 	<!-- jquery -->
 	<script src="assets/js/jquery-1.11.3.min.js"></script>
@@ -62,7 +63,6 @@
 	<script src="assets/js/sticker.js"></script>
 	<!-- main js -->
 	<script src="assets/js/main.js"></script>
-
-    @yield('scripts')
+    @yield('js')
 </body>
 </html>
