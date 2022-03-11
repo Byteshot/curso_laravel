@@ -9,12 +9,13 @@
 <body>
     <center>
         <h1>Grupo: {{$grupo->nombre}}</h1>
-        <table>
+        <table border="1">
             <tr>
                 <th>id</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>email</th>
+                <th>Perros</th>
             </tr>
             @foreach ($grupo->alumnos as $alumno)
                 <tr>
@@ -22,7 +23,12 @@
                     <td>{{$alumno->nombre}}</td>
                     <td>{{$alumno->apellido}}</td>
                     <td>{{$alumno->email}}</td>
-                    <td>{{$alumno->email}}</td>
+                    <td>
+                        @foreach ($alumno->relacionPerros as $relacionPerro)
+                            {{$relacionPerro->perro->nombre}} - Raza: {{$relacionPerro->perro->raza->nombre}}<br>
+                            <br>
+                        @endforeach
+                    </td>
                 </tr>
             @endforeach
     </center>
