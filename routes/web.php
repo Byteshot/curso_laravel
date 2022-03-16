@@ -28,6 +28,7 @@ Route::get('/inicio', [GeneralController::class, 'inicio'])->name('inicio');
 Route::get('/razas', [RazaController::class, 'inicio'])->name('razas.inicio');
 Route::get('/razas/detalle/{id}', [RazaController::class, 'show'])->name('razas.detalle');
 
+Route::get('/relaciones', [GrupoController::class, 'relaciones'])->name('relacion');
 
 Route::get('/grupos', [GrupoController::class, 'inicio'])->name('grupo.inicio');
 Route::get('/grupos/detalle/{codigo}', [GrupoController::class, 'detalleGrupo'])->name('grupo.detalle');

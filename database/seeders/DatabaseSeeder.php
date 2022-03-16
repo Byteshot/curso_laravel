@@ -10,6 +10,7 @@ use Database\Seeders\RazaSeeder;
 use Database\Seeders\PerrosSeeder;
 use Database\Seeders\Grupos;
 use Database\Seeders\Alumnos;
+use Database\Seeders\AlumnoPerroSeed;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -24,7 +25,8 @@ class DatabaseSeeder extends Seeder
         //$this->call(create_categorias_frutas::class);
         // $this->call(RazaSeeder::class);
         // $this->call(PerrosSeeder::class);
-        //$this->call(Grupos::class);
-        $this->call(Alumnos::class);
+        // $this->call(Grupos::class);
+        // $this->call(Alumnos::class);
+        $this->call(AlumnoPerroSeed::class);
     }
 }
