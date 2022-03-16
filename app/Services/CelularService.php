@@ -28,7 +28,7 @@ class CelularService
      */
     public function obtenerCelulares()
     {
-        return $this->performRequest('GET', '/celulares');
+        return $this->peticionService('GET', '/celulares');
     }
 
     /**
@@ -38,7 +38,7 @@ class CelularService
      */
     public function agregarCelular($data)
     {
-        return $this->performRequest('POST', '/celulares', $data);
+        return $this->peticionService('POST', '/celulares', $data);
     }
 
     /**
@@ -48,7 +48,7 @@ class CelularService
      */
     public function obtenerCelular($id)
     {
-        return $this->performRequest('GET', "/celular/{$id}");
+        return $this->peticionService('GET', "/celular/{$id}");
     }
 
     /**
@@ -58,7 +58,7 @@ class CelularService
      */
     public function editarCelular($data,$id)
     {
-        return $this->performRequest('PUT', "/celular/{$id}", $data);
+        return $this->peticionService('PUT', "/celular/{$id}", $data);
     }
 
     /**
@@ -68,7 +68,7 @@ class CelularService
      */
     public function eliminarCelular($id)
     {
-        return $this->performRequest('DELETE', "/celular/{$id}");
+        return $this->peticionService('DELETE', "/celular/{$id}");
     }
 
 }

@@ -13,14 +13,14 @@ trait ServiciosExternos
      *
      * @return String
      */
-    public function performRequest($metodo, $requestUrl, $params = [], $headers =[])
+    public function peticionService($metodo, $peticionUrl, $parametors = [], $cabezeras =[])
     {
         $cliente = new Client([
             'base_uri' => $this->baseUrl,
         ]);
 
-        $response = $cliente->request($metodo, $requestUrl,['form_params' => $params,
-        'headers' => $headers]);
+        $response = $cliente->request($metodo, $peticionUrl,['form_params' => $parametors,
+        'headers' => $cabezeras]);
 
         return $response->getBody()->getContents();
     }

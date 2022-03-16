@@ -6,6 +6,7 @@ use App\Http\Controllers\RazaController;
 use App\Http\Controllers\GrupoController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +15,15 @@ use Illuminate\Support\Facades\Route;
 | Rutas para el frontend
 |
 */
+
+Route::get('/api', [GeneralController::class, 'api'])->name('api');
+Route::get('/test', function () {
+    return view('test');
+});
+
 Route::get('/', [GeneralController::class, 'raiz'])->name('raiz');
 Route::get('/inicio', [GeneralController::class, 'inicio'])->name('inicio');
-Route::get('/acerca', [GeneralController::class, 'acerca'])->name('acerca');
+
 
 Route::get('/razas', [RazaController::class, 'inicio'])->name('razas.inicio');
 Route::get('/razas/detalle/{id}', [RazaController::class, 'show'])->name('razas.detalle');

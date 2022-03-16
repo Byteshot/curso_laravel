@@ -9,6 +9,11 @@ class Grupo extends Model
 {
     use HasFactory;
     protected $table = 'grupos';
+    protected $fillable = [
+                        'nombre',
+                        'descripcion',
+                        'codigo',
+                        ];
     //public $timestamps = false;
 
     public function alumnos()

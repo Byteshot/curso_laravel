@@ -2,7 +2,7 @@
 
 namespace App\Exceptions;
 
-use App\Traits\ApiResponse;
+use App\Traits\RespuestaApi;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Response;
@@ -15,7 +15,7 @@ use Throwable;
 
 class Handler extends ExceptionHandler
 {
-    use ApiResponse;
+    use RespuestaApi;
     /**
      * A list of the exception types that are not reported.
      *
@@ -53,37 +53,37 @@ class Handler extends ExceptionHandler
         if ($exception instanceof HttpException) {
             $codigo = $exception->getStatusCode();
             $mensaje = Response::$statusTexts[$codigo];
-            return $this->respondWithError($mensaje, $codigo);
+            return $this->respuestaConError($mensaje, $codigo);
         }
 
         if ($exception instanceof ModelNotFoundException) {
             $modelo = strtolower(class_basename($exception->getModel()));
-            return $this->respondWithError("No existe ninguna instancia de {$modelo} con el id especificado", Response::HTTP_NOT_FOUND);
+            return $this->respuestaConError("No existe ninguna instancia de {$modelo} con el id especificado", Response::HTTP_NOT_FOUND);
         }
 
         if ($exception instanceof AuthorizationException) {
-            return $this->respondWithError($exception->getMessage(), Response::HTTP_FORBIDDEN);
+            return $this->respuestaConError($exception->getMessage(), Response::HTTP_FORBIDDEN);
         }
 
         if ($exception instanceof AuthenticationException) {
-            return $this->respondWithError($exception->getMessage(), Response::HTTP_UNAUTHORIZED);
+            return $this->respuestaConError($exception->getMessage(), Response::HTTP_UNAUTHORIZED);
         }
 
         if ($exception instanceof ValidationException) {
             $errors = $exception->validator->errors()->getMessages();
-            return $this->respondWithError($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
+            return $this->respuestaConError($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         if($exception instanceof ClientException){
             $mensaje = $exception->getResponse()->getBody();
             $codigo = $exception->getCode();
-            return $this->errorMessage($mensaje, $codigo);
+            return $this->mensajeError($mensaje, $codigo);
         }
 
         if (env('APP_DEBUG', false)) {
             return parent::render($request, $exception);
         }
 
-        return $this->respondWithError('Falla inesperada. Intente luego', Response::HTTP_INTERNAL_SERVER_ERROR);
+        return $this->respuestaConError('Falla inesperada. Intente luego', Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }

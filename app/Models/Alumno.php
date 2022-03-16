@@ -9,4 +9,10 @@ class Alumno extends Model
 {
     use HasFactory;
     protected $table = 'alumnos';
+    protected $fillable = [
+                        'nombre',
+                        'apellido',
+                        'email',
+                        'grupo_id'
+                        ];
 }
